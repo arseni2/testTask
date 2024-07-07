@@ -171,3 +171,37 @@ interface IApiResponseStatuses extends Omit<IDefaultApiResponse, "_page"> {
 interface IApiResponseLeads extends IDefaultApiResponse {
 	_embedded: { leads: ILead[] }
 }
+
+//Interface который должен вернуть API
+interface IContactRes {
+	id: number;
+	email: string;
+	phone: string;
+}
+
+interface IUserRes {
+	id: number;
+	name: string;
+}
+
+interface IStatusRes {
+	id: number;
+	name: string;
+	color: string;
+}
+
+interface IData {
+	id: number;
+	status_id: number;
+	pipeline_id: number;
+	responsible_user_id: number;
+	name: string;
+	price: number;
+	created_by: number;
+	created_at: number;
+	contact_id: number;
+	company_id: number;
+	contact: IContactRes;
+	user: IUserRes;
+	status: IStatusRes;
+}

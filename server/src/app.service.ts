@@ -9,7 +9,7 @@ export class AppService {
 
 	}
 
-	private TransformToArray(leads: ILead[], pipelines: IPipeline[], users: IUserResponsible[], contacts: IContact[]): any[] {
+	private TransformToArray(leads: ILead[], pipelines: IPipeline[], users: IUserResponsible[], contacts: IContact[]): IData[] {
 		// Create a map for quick lookup of pipelines and users
 		const pipelineMap = new Map<number, IPipeline>();
 		pipelines.forEach(pipeline => {
@@ -63,7 +63,7 @@ export class AppService {
 		return transformedLeads;
 	}
 
-	async Accumulate(query: string): Promise<any> {
+	async Accumulate(query: string): Promise<IData[] | []> {
 		console.log(query)
 		const [leadsResponse, statusesResponse, usersResponse, contactsResponse] = await Promise.all([
 			this.httpService.axios.get<IApiResponseLeads>(`/api/v4/leads?query=${query || ""}`),
