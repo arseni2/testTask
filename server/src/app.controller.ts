@@ -16,7 +16,7 @@ export class AppController {
 		required: false
 	})
 	@Get("accumulate")
-    Accumulate(@Query("query") query: string): any {
+    Accumulate(@Query("query") query: string): Promise<IData[] | []> {
 		return this.appService.Accumulate(query);
 	}
 }
